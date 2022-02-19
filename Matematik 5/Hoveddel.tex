@@ -20,7 +20,61 @@ Vi betragter i det følgende punkterne $A = (0,-1)$ og $B=(0,0)$.
 
 \subsection{Bestem Hessematricen for $f$ i $A$, og bestem arten af det approksimerede andengradspolynomium $P_2$ for $f$ med udviklingspunktet $A$. Illustrer. Bestem den største fejl man begår, hvis man benytter $P_2$ i stedet for $f$ på det afsluttende kvadrat der er afgrænset af linjerne $x=\frac{-1}{10},x=\frac{1}{10},y=\frac{-11}{10}$ og $y=\frac{-9}{10}$.}
 
+Hessematricen er bygget op af de dobbelt-differentierede funktioner for $f$ i $A$. 
+\begin{align}
+    H(x_0,y_0)= 
+    \left[
+    \begin{array}{cc}
+        f^{''}_{xx}(x_0,y_0) & f^{''}_{xy}(x_0,y_0)\\f^{''}_{xy}(x_0,y_0) & f^{''}_{yy}(x_0,y_0)
+    \end{array}
+\right] 
+\end{align}
+Hvor $(x_0,y_0)=(0,-1)$.
+Dette løses og hessematricen fås til at være:
+\begin{align}
+    H(x_0,y_0)= 
+    \left[
+    \begin{array}{cc}
+        -\frac{5}{2} & 0\\0 & -2
+    \end{array}
+\right] 
+\end{align}
+For at finde det approksimerede andengradspolynomium bruges hessematricen i taylors grænseformel.
+\begin{align*}
+    P2(x,y)=f(x_0,y_0)+\nabla f(x_0,y_0) \cdot \left[ \begin{array}{c}x-x_0\\ y-y_0 \end{array}\right] + \frac12 \cdot \left[ \begin{array}{cc}x-x_0& y-y_0 \end{array}\right] \cdot H(x_0,y_0) \cdot \left[ \begin{array}{c}x-x_0\\ y-y_0 \end{array}\right]  + \rho ^2 + \epsilon
+\end{align*}
+Hvor $(x_0,y_0)=(0,-1)$.
+
+Dette løses til
+\begin{align}
+    P2(0,-1) = 
+\end{align}
+
+
+
+
 \subsection{Gør rede for at $B$ er et stationært punkt for $f$ hvor man ikke umiddelbart kan bruge Hessemetoden til at afgøre om $B$ er sted for et lokalt extremum.}
+
+Hvis $B$ er et stationært punkt betyder det at gradientet for punktet vil være lig $(0,0)$.\footnote{Defintion 21.9} Dette testes.
+\begin{align}
+    \nabla f(0,0) = \left(f'_x(0,0),f'_y(0,0)\right) = (0,0)
+\end{align}
+Dette betyder at $B$ er et stationært punkt.
+
+Så findes hessematricen for $f$ i $B$, da denne bruges til hessemetoden som kan afgøre om $B$ er et lokalt extremum.
+
+\begin{align}
+    H(0,0) = 
+    \left[
+        \begin{array}{cc}
+            0 & 0\\0 & -2
+        \end{array}
+    \right] 
+\end{align}
+Heraf aflæses egenværdierne til at være $(0,-2)$.
+Dette betyder at hvis man ganger egenværdierne sammen giver det 0. Denne egenskab betyder så at man ikke kan sikre at $B$ er et lokalt extremum ud fra hessemetoden\footnote{Definition 21.17}.
+
+
 
 \subsection{Vis at restriktionen af $f$ til alle rette linjer gennem $B$ har lokalt maksimum i $B$. Kan vi på den baggrund slutte at $f$ har lokalt maksimum i $B$? HAR $f$ lokalt maksimum i $B$?}
 
