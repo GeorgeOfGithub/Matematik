@@ -48,12 +48,15 @@ Dette løses og hessematricen fås til at være:
 \end{align}
 For at finde det approksimerede andengradspolynomium bruges mtaylor funktionen i maple. Så fås det approksimerede andengradspolynomium til:
 \begin{align}
-    P2(0,-1) = 
+    P2(0,-1) = 1-\frac{5\cdot x^2}{4} - y^2
 \end{align}
 
-Denne funktion ligner en 
+Denne funktion ligner en elliptisk cylinderflade, hvis ligning har formen:
+\begin{align}
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+\end{align}
 
-for at finde den største fejl man begår laves en funktion ud fra den originale funktion $f$ og den approksimerede funktion $P2$. Denne funktion er
+For at finde den største fejl man begår laves en funktion ud fra den originale funktion $f$ og den approksimerede funktion $P2$. Denne funktion er
 \begin{align}
     R(x,y) = f(x,y)-P2(x,y)
 \end{align}
