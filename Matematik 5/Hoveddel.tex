@@ -16,6 +16,13 @@ Vi starter med at betragte en kurve $K$ givet ved parameterfremstillingen
 
 For at plotte funktionen $f(x,y)$ bruges plot3d. Spacecurve bruges til at plotte den sammensatte funktion $h(u)$. Disse funktioner ses i Maple.
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=8cm]{løftet h.png}
+        \caption{K løftet}
+    \label{hlift}
+\end{figure}
+
 Værdierne for $u$ findes ved at lave to ligninger med en ubekendt. Den første ligning er at $h(u)=1$ og $h'(u)=0$. De løses med Maple og $u$ findes til at være 0. Dette ses i Maple.
 \begin{align}
     h(u)=1 \text{ og } h'(u)=0 \rightarrow u=0
@@ -29,8 +36,10 @@ For at se for hvilke værdier af u hvor $h'(u)$ er negativ plottes funktionen hv
         \caption{$h'(u)$ plottet omkring origo}
     \label{diffh}
 \end{figure}
+\newpage
 
 Det ses på figur \ref{diffh}, at når u bliver negativt vil $h'(u)$ også blive negativt og omvendt at når u bliver positivt vil $h'(u)$ også blive positivt
+
 
 
 Vi betragter i det følgende punkterne $A = (0,-1)$ og $B=(0,0)$.
@@ -63,16 +72,37 @@ For at finde det approksimerede andengradspolynomium bruges mtaylor funktionen i
 
 Denne funktion ligner en elliptisk cylinderflade, hvis ligning har formen:
 \begin{align}
-    \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+    \frac{x^2}{a^2} + \frac{y^2}{b^2} = z
 \end{align}
-
+Dette er fordi den har top-punkt i $(0,0,0)$
 For at finde den største fejl man begår laves en funktion ud fra den originale funktion $f$ og den approksimerede funktion $P2$. Denne funktion er
 \begin{align}
     R(x,y) = f(x,y)-P2(x,y)
 \end{align}
 
-Med denne funktion skal der findes extrema for funktion. Dete skal være maksimum og ikke minimum, da den største værdi skal findes. Derfor bruges også den dobbelt differentierede funktion. $R''(x,y)$. 
+Med denne funktion skal der findes extrema for funktionem. Dette gøres ved først at undersøge om der er et stationært punkt. Dette gøres ved at finde gradienten og sætte den lig 0 og se om der findes nogle punkter. 
+\begin{align}
+    \nabla f(x_0,y_0) = 0 \rightarrow \\
+    x_0 = 0, y_0 = y
+\end{align}
+Dette viser at de stationære punkter ligger på en linje som løber langs x-aksen. Derfor kan dette ikke være den største restværdi.
 
+Så undersøges randen for om der er nogen extrema, da disse nødvendigvis vil være der hvor der er størst restværdi. Dette gøres ved at lave en parameterfremstilling for hver af randlinjerne og finde extremum ved at differentiere og sætte lig 0.
+\begin{align}
+    R'_x \left( x,-\frac{1}{10} \right)=\frac{1}{80}
+\end{align}
+Dette indsættes så i funktionen
+\begin{align}
+    R\left(\frac{1}{80},\frac{1}{10} \right)=\frac{2021}{160000}
+\end{align}
+
+Dette betyder at dens extremum ligger uden for firkanten som er afgrænset. Det samme sker for de andre randlinjer. Derfor er det eneste sted som er tilbage er i randhjørnerne. Af disse skal den maksimale absolutte værdi findes. Dette gøres med maple max kommandoen for de absolutte værdier ved hvert hjørne. Se maple ligning.
+Derfra fås det at den største fejl ligger i hjørnerne med forskriften:
+\begin{align}
+    R\left(-\frac{1}{10},-\frac{11}{10} \right) \text{ og } R \left(\frac{1}{10},-\frac{11}{10}\right)
+\end{align}
+Disse hjørne har den største fejl på $\frac{51}{40000}$.
+\newpage
 \subsection{Gør rede for at $B$ er et stationært punkt for $f$ hvor man ikke umiddelbart kan bruge Hessemetoden til at afgøre om $B$ er sted for et lokalt extremum.}
 
 Hvis $B$ er et stationært punkt betyder det at gradientet for punktet vil være lig $(0,0)$.\footnote{Defintion 21.9} Dette testes.
@@ -98,6 +128,19 @@ Dette betyder at hvis man ganger egenværdierne sammen giver det 0. Denne egensk
 
 \subsection{Vis at restriktionen af $f$ til alle rette linjer gennem $B$ har lokalt maksimum i $B$. Kan vi på den baggrund slutte at $f$ har lokalt maksimum i $B$? HAR $f$ lokalt maksimum i $B$?}
 
+For at vise at alle rette linjer har et maksimum i $B$ undersøges der først om der er et stationært punkt i $B$.
 
+Først vides der at der kigges på den rette linje igennem origo og derfor kan $y$ erstattes at funktionen for den rette linje $a\cdot x$. Dernæst differentieres funktionen for at se om det er et extrema.
+\begin{align}
+    f'(x,ax) = \frac{15}{4} x^{2} a -x^{3}-2 a^{2} x
+\end{align}
 
+Her sættes $x=0$ og det fås at det er et lokalt extrema da a bare er en variabel. Så skal der undersøges om det er et maksimum eller et minimum ved at differentiere igen og se om det er positivt eller negativt. 
 
+\begin{align}
+    f''(x,ax) = \frac{15}{2} a x -3 x^{2}-2 a^{2}
+\end{align}
+
+Heraf fås det at $a$ altid vil være negativt og derfor er det et maksimum og ikke minimum \footnote{Definition 25.15}. 
+
+Til sidst skal der undersøges hvor den rette linje svarer til x-aksen. Her vil $x=0$ og $y=0$. Der differentieres og dobbelt-differentieres igen og det ses at igen så bliver det bare en variabel $y$ og den bliver negativ ved dobblet-differention. 
