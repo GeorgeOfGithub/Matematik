@@ -14,21 +14,21 @@ Vi starter med at betragte en kurve $K$ givet ved parameterfremstillingen
 \end{align}
 \subsection{Lad $h$ betegne den sammensatte funktion $h(u)=f(\textbf{r}(u)),u\in \textbf{R}$. Lav et Maple-plot hvor du har brugt $h$ til at løfte $K$ op på grafen for $f$. Bestem de værdier af $u$ for hvilke $h(u)=1$ og $h'(u)=0$, og angiv de intervaller for $u$ i hvilke $h'(u)$ er negativ, henholdsvis positiv.}
 
-For at plotte funktionen $f(x,y)$ bruges plot3d. Spacecurve bruges til at plotte den sammensatte funktion $h(u)$. Disse funktioner ses i Maple.
+For at plotte funktionen $f(x,y)$ bruges plot3d. Spacecurve bruges til at plotte den sammensatte funktion $h(u)$. Disse funktioner ses i maple ligning 1.1 og 1.4. For at løfte $K$ op i 3D bruges $h(u)$ idet den gør at funktionen nu følger $f(x,y)$. Derfor tilføjes $h(u)$ som tredjeaksen i $r(u)$.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=8cm]{løftet h.png}
-        \caption{K løftet}
+        \caption{$K$ løftet op på grafen for $f$}
     \label{hlift}
 \end{figure}
 
-Værdierne for $u$ findes ved at lave to ligninger med en ubekendt. Den første ligning er at $h(u)=1$ og $h'(u)=0$. De løses med Maple og $u$ findes til at være 0. Dette ses i Maple.
+Værdierne for $u$ findes ved at lave to ligninger med en ubekendt. Den første ligning er at $h(u)=1$ og $h'(u)=0$. De løses med Maple og $u$ findes til at være 0. Dette ses i maple ligning 1.5.
 \begin{align}
     h(u)=1 \text{ og } h'(u)=0 \rightarrow u=0
 \end{align}
 
-For at se for hvilke værdier af u hvor $h'(u)$ er negativ plottes funktionen hvor der så ses for hvilket værdier for u at $h'(u)$ er negativ.
+For at se for hvilke værdier af u hvor $h'(u)$ er negativ, plottes funktionen hvor der så ses for hvilket værdier for u at $h'(u)$ er negativ.
 
 \begin{figure}[htp]
     \centering
@@ -39,9 +39,7 @@ For at se for hvilke værdier af u hvor $h'(u)$ er negativ plottes funktionen hv
 \newpage
 
 Det ses på figur \ref{diffh}, at når u bliver negativt vil $h'(u)$ også blive negativt og omvendt at når u bliver positivt vil $h'(u)$ også blive positivt
-
-
-
+\\
 Vi betragter i det følgende punkterne $A = (0,-1)$ og $B=(0,0)$.
 
 \subsection{Bestem Hessematricen for $f$ i $A$, og bestem arten af det approksimerede andengradspolynomium $P_2$ for $f$ med udviklingspunktet $A$. Illustrer. Bestem den største fejl man begår, hvis man benytter $P_2$ i stedet for $f$ på det afsluttende kvadrat der er afgrænset af linjerne $x=\frac{-1}{10},x=\frac{1}{10},y=\frac{-11}{10}$ og $y=\frac{-9}{10}$.}
@@ -56,7 +54,7 @@ Hessematricen er bygget op af de dobbelt-differentierede funktioner for $f$ i $A
 \right] 
 \end{align}
 Hvor $(x_0,y_0)=(0,-1)$.
-Dette løses og hessematricen fås til at være:
+Dette løses, se maple ligning 2.1 til 2.4, og hessematricen fås til at være:
 \begin{align}
     H(x_0,y_0)= 
     \left[
@@ -74,13 +72,13 @@ Denne funktion ligner en elliptisk cylinderflade, hvis ligning har formen:
 \begin{align}
     \frac{x^2}{a^2} + \frac{y^2}{b^2} = z
 \end{align}
-Dette er fordi den har top-punkt i $(0,0,0)$
+Dette er fordi den har top-punkt i $(0,0,0)$ og det ses efter maple ligning 2.6.
 For at finde den største fejl man begår laves en funktion ud fra den originale funktion $f$ og den approksimerede funktion $P2$. Denne funktion er
 \begin{align}
     R(x,y) = f(x,y)-P2(x,y)
 \end{align}
 
-Med denne funktion skal der findes extrema for funktionem. Dette gøres ved først at undersøge om der er et stationært punkt. Dette gøres ved at finde gradienten og sætte den lig 0 og se om der findes nogle punkter. 
+Med denne funktion skal der findes extrema for funktionem. Dette gøres ved først at undersøge om der er et stationært punkt. Dette gøres ved at finde gradienten og sætte den lig 0 og se om der findes nogle punkter. Se maple ligning 2.10. 
 \begin{align}
     \nabla f(x_0,y_0) = 0 \rightarrow \\
     x_0 = 0, y_0 = y
@@ -89,14 +87,10 @@ Dette viser at de stationære punkter ligger på en linje som løber langs x-aks
 
 Så undersøges randen for om der er nogen extrema, da disse nødvendigvis vil være der hvor der er størst restværdi. Dette gøres ved at lave en parameterfremstilling for hver af randlinjerne og finde extremum ved at differentiere og sætte lig 0.
 \begin{align}
-    R'_x \left( x,-\frac{1}{10} \right)=\frac{1}{80}
-\end{align}
-Dette indsættes så i funktionen
-\begin{align}
-    R\left(\frac{1}{80},\frac{1}{10} \right)=\frac{2021}{160000}
+    R'_x \left( -\frac{1}{10},y \right)=\frac{1}{80}
 \end{align}
 
-Dette betyder at dens extremum ligger uden for firkanten som er afgrænset. Det samme sker for de andre randlinjer. Derfor er det eneste sted som er tilbage er i randhjørnerne. Af disse skal den maksimale absolutte værdi findes. Dette gøres med maple max kommandoen for de absolutte værdier ved hvert hjørne. Se maple ligning.
+Dette betyder at dens extremum ligger uden for firkanten som er afgrænset. Det samme sker for de andre randlinjer, se maple ligning 2.11 til 2.12. Derfor er det eneste sted som er tilbage er i randhjørnerne. Af disse skal den maksimale absolutte værdi findes. Dette gøres med maple max kommandoen for de absolutte værdier ved hvert hjørne. Se maple ligning 2.15.
 Derfra fås det at den største fejl ligger i hjørnerne med forskriften:
 \begin{align}
     R\left(-\frac{1}{10},-\frac{11}{10} \right) \text{ og } R \left(\frac{1}{10},-\frac{11}{10}\right)
