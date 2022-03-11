@@ -72,5 +72,16 @@ Nu har man en ny parameterfremstilling.
     r(v) = (3.48 \cdot cos(v \cdot 1.41), 3.48 \cdot sin(v\cdot 1.41), v)
 \end{align}
 Så findes Jacobi ved at differentiere ud fra $v$ og finde længden af den vektor med kvadratroden. 
+Med Jacobi kan man nu finde længden af den kurve som følger sneglegangen.
+\begin{align}
+    \int^{34.8}_0 = Jacobi \,dv = 191.39
+\end{align}
+Peter den Store red 191.39 meter ned ad sneglegangen. Dette passer nogenlunde overens med at længden ned inderst er 93.5 meter og yderst er den 281 meter. Tallet i midten ligger nogenlund midt mellem disse to tal. 
 
 \subsection{Antag at sneglegangens lodrette tykkelse aftager proportionalt med afstanden fra grundniveau, således at den nederst er 0.5 meter og øverst 0.4 meter. Giv en parameterfremstilling af sneglegangen opfattet som massivt rumligt område. Hvor stor en del udgør sneglegangens samlede masse af hele massen af rundetårn. (brug den i linket oplyste massefylde for brændt ler og sten.)?}
+
+Idet tykkelsen aftager lineært med højden, vil tykkelsen kunne beskrives med en lineær funktion $f(h)=a \cdot h + b$, hvor b nemt kan ses til at være 0.5. Heraf kan man ud fra informationen om at ved højden 34.8 vil tykkelsen være 0.4 lave en formel som finder $a$.
+\begin{align}
+    f(34.8) = 0.4 \rightarrow a \cdot 34.8 + 0.5 = 0.4 \rightarrow a = -0.002873563218
+\end{align}
+Således kan man nu finde massen af sneglegangen ud fra integralet af Jacobi ganget med funktionen for tykkelsen.
