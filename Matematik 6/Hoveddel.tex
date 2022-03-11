@@ -17,7 +17,7 @@ Her er $u$ radius gående fra 3 til 7 og $v$ angiver gangen rundt i en cirkel og
 
 Observatoriets halvkugle har parameterfremstillingen
 \begin{align}
-    r(u,v) = (sin(u)*3*cos(v),sin(u)*3*sin(v),cos(u)*3+38,4)
+    r(u,v) = (sin(u) \cdot 3 \cdot cos(v),sin(u) \cdot 3 \cdot sin(v),cos(u) \cdot 3+38,4)
 \end{align}
 Hvor radius er 3 og centrum er blevet flyttet 38,4 op ad z-aksen.
 
@@ -34,6 +34,43 @@ Det endelige rundetårn er tegnet på figur \ref{rund}
 Rundetårn er kendt for sneglegangen.
 \subsection{Først betragtes Sneglegangen som en regulær flade der opfylder at snitkurverne mellem fladen og en vilkårlig halvplan som udgår fra tårnets omdrejningsakse, er vandrette linjestykker. Bestem en parameterfremstilling for fladen og bestem dens areal}
 
+Sneglegangen er en spiral i 3D. Dennes parameterfremstilling vil være opbygget ligesom en cirkel, bortset fra at højden varierer alt efter vinkeldrejningen, således at man stiger opad samtidig med at man drejer rundt i cirklen. Derfor vil parameterfremstillingen være næsten den samme som en cirkel, bortset fra at tredje-aksen vil afhænge af vinkeldrejningen.
+
+\begin{align}
+    r(u,v) = (u \cdot sin(v),u \cdot cos(v),v)
+\end{align}
+I denne parameterfremstilling vil $u$ være radius og $v$ skal nu være højden. Dette betyder at $v$ inde i $cos$ og $sin$ skal ganges med en faktor som gør at vinkeldrejningen passer overens. Faktoren findes ud fra højden og hvor mange drejninger som der skal laves af sneglegangen. Ifølge rundetårn sker der 7.8 drejninger, idet trætrappen ikke er blevet taget med i simulationen af rundetårn. Højden er 34.8 meter.
+Ud fra dette findes faktoren med ligningen:
+\begin{align}
+    \text{drejninger} \cdot \frac{2 \pi}{faktor} = \text{højden}
+\end{align}
+Så indsættes tal.
+\begin{align}
+    7.8 \cdot \frac{2 \pi}{faktor} = 34.8 
+\end{align}
+\begin{align}
+    faktor = 1.41 
+\end{align}
+Denne faktor ganges så med $v$. 
+
+Det vil sige at parameterfremstillingen for sneglegangen er
+\begin{align}
+    r(u,v) = (u \cdot sin(v \cdot 1.41),u \cdot cos(v \cdot 1.41),v) 
+\end{align}
+Så skal arealet bestemmes. Dette gøres ved at finde Jacobi af parameterfremstillingen og integrere det. Jacobi findes med Maple, se ligning 2.3. 
+Ud fra dette beregnes arealet. Se Maple ligning 2.4.
+\begin{align}
+    \int^{34.8}_{0} \int^{7.68}_{0} \text{Jacobi} \,du \,dv = 1490
+\end{align}
+Arealet for sneglegangen er $1490 m^2$.
+
 \subsection{Antag at Peter den Store red på midten af sneglegangen. Hvor lang var turen ned? Kontrollér oplysningerne om den gennemsnitlige stigning yderst og inderst.}
+
+For at finde længden af turen ned af sneglegangen laves sneglegangen om til en kurve sådan at den følger sneglegangen. Dette betyder at den kun skal være afhængig af en variabel, højden, og at radius dermed skal være fast. Idet Peter den Store red på midten af sneglegangen vælges radius til at være halvdelen af den tidligere radius på 7.68, dvs 3.84.
+Nu har man en ny parameterfremstilling.
+\begin{align}
+    r(v) = (3.48 \cdot cos(v \cdot 1.41), 3.48 \cdot sin(v\cdot 1.41), v)
+\end{align}
+Så findes Jacobi ved at differentiere ud fra $v$ og finde længden af den vektor med kvadratroden. 
 
 \subsection{Antag at sneglegangens lodrette tykkelse aftager proportionalt med afstanden fra grundniveau, således at den nederst er 0.5 meter og øverst 0.4 meter. Giv en parameterfremstilling af sneglegangen opfattet som massivt rumligt område. Hvor stor en del udgør sneglegangens samlede masse af hele massen af rundetårn. (brug den i linket oplyste massefylde for brændt ler og sten.)?}
