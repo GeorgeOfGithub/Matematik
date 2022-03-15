@@ -7,7 +7,7 @@ Parameterfremstillingen for en cylinder er:
 \begin{align}
     r(u,v) =(R \cdot cos(v), R \cdot sin(v), u) 
 \end{align}
-Hvor $u$ er en variabel som går fra 0 til højden af cylinderen og $v$ angiver gangen rundt i en cirkel og går fra 0 til $2\pi$. For bunden af rundetårn er højden 34,8 meter og for observatoriets bund er det 4 meter. 
+Hvor $u$ er en variabel som går fra 0 til højden af cylinderen og $v$ angiver gangen rundt i en cirkel og går fra 0 til $2\pi$. For bunden af rundetårn er højden 34,8 meter og for observatoriets bund er det 4 meter. $R$ er radius for cylinderen og for bunden er det 7.68 og for observatoriet et det 3.
 
 Fladen som man står på er en flad ring som har parameterfremstillingen
 \begin{align}
@@ -59,24 +59,26 @@ Det vil sige at parameterfremstillingen for sneglegangen er
 \end{align}
 Så skal arealet bestemmes. Dette gøres ved at finde Jacobi af parameterfremstillingen og integrere det. Jacobi findes med Maple, se ligning 2.3. 
 Ud fra dette beregnes arealet. Se Maple ligning 2.4.
+Radius for sneglegangen går ikke helt ind til midten af rundetårn men starter først ved en radius på 1.9. Den går heller ikke helt ud til ydermuren, men kun ind til ydermurens inderside på 6.10. Derfor går $u$ fra 1.9 til 6.10
 \begin{align}
-    \int^{34.8}_{0} \int^{7.68}_{0} \text{Jacobi} \,du \,dv = 1490
+    \int^{34.8}_{0} \int^{6.10}_{1.90} \text{Jacobi} \,du \,dv = 833
 \end{align}
-Arealet for sneglegangen er $1490 m^2$.
+Arealet for sneglegangen er $833 m^2$.
 
 \subsection{Antag at Peter den Store red på midten af sneglegangen. Hvor lang var turen ned? Kontrollér oplysningerne om den gennemsnitlige stigning yderst og inderst.}
 
-For at finde længden af turen ned af sneglegangen laves sneglegangen om til en kurve sådan at den følger sneglegangen. Dette betyder at den kun skal være afhængig af en variabel, højden, og at radius dermed skal være fast. Idet Peter den Store red på midten af sneglegangen vælges radius til at være halvdelen af den tidligere radius på 7.68, dvs 3.84.
+For at finde længden af turen ned af sneglegangen laves sneglegangen om til en kurve sådan at den følger sneglegangen. Dette betyder at den kun skal være afhængig af en variabel, højden, og at radius dermed skal være fast. Idet Peter den Store red på midten af sneglegangen vælges radius til at være $\frac{6.10}{2} = 3.05$
 Nu har man en ny parameterfremstilling.
 \begin{align}
-    r(v) = (3.48 \cdot cos(v \cdot 1.41), 3.48 \cdot sin(v\cdot 1.41), v)
+    r(v) = (3.05 \cdot cos(v \cdot 1.41), 3.05 \cdot sin(v\cdot 1.41), v)
 \end{align}
 Så findes Jacobi ved at differentiere ud fra $v$ og finde længden af den vektor med kvadratroden. 
 Med Jacobi kan man nu finde længden af den kurve som følger sneglegangen.
 \begin{align}
-    \int^{34.8}_0 = Jacobi \,dv = 191.39
+    \int^{34.8}_0 = Jacobi \,dv = 151
 \end{align}
-Peter den Store red 191.39 meter ned ad sneglegangen. Dette passer nogenlunde overens med at længden ned inderst er 93.5 meter og yderst er den 281 meter. Tallet i midten ligger nogenlund midt mellem disse to tal. 
+Peter den Store red 151 meter ned ad sneglegangen. Det svarer til en stigning for sneglegangen på $\frac{højde}{længde}=\frac{34.8}{151} = 0.23 \rightarrow 23\%$. 
+Stigningen inderst er $10\%$ og yderst er den $33\%$. Derfor er den midterste stigning ifølge det på $\frac{10\%+33\%}{2}=0.215 \rightarrow 21.5\%$. Dette passer meget overens med den fundne stigning. Der er ca $7\%$ forskel.  
 
 \subsection{Antag at sneglegangens lodrette tykkelse aftager proportionalt med afstanden fra grundniveau, således at den nederst er 0.5 meter og øverst 0.4 meter. Giv en parameterfremstilling af sneglegangen opfattet som massivt rumligt område. Hvor stor en del udgør sneglegangens samlede masse af hele massen af rundetårn. (brug den i linket oplyste massefylde for brændt ler og sten.)?}
 
@@ -84,4 +86,20 @@ Idet tykkelsen aftager lineært med højden, vil tykkelsen kunne beskrives med e
 \begin{align}
     f(34.8) = 0.4 \rightarrow a \cdot 34.8 + 0.5 = 0.4 \rightarrow a = -0.002873563218
 \end{align}
-Således kan man nu finde massen af sneglegangen ud fra integralet af Jacobi ganget med funktionen for tykkelsen.
+Nu kan man så lave en ny parameterfremstilling hvor første og anden koordinaten er den samme, mens at tykkelsen så varierer ud fra højden ganget med en tredje variabel, da sneglegangen er et rum.
+\begin{align}
+    s(u,v,w) = (u \cdot sin(v),u \cdot cos(v),v + f(v) \cdot w)
+\end{align}
+
+Således kan man nu finde rumfanget af sneglegangen ud fra integralet af Jacobi for denne parameterfremstilling.
+
+\begin{align}
+    \int^{1}_0 \int^{34.8}_0 \int^{6.1}_1.9= Jacobi \,du \,dv \,dw = 368
+\end{align}
+
+Nu kan man så finde massen ud fra informationen om massefylden for ler på 2 $\frac{t}{m^3}$
+\begin{align}
+    \text{masse} = 2 \cdot 368 = 737 \text{T}
+\end{align}
+Sneglegangen vejer 737 ton. Rundetårn vejer 5914 ton og dermed svarer sneglegangens vægt til $\frac{5194}{737} = 0.12 \rightarrow 12\%$ af hele rundetårns vægt.
+
